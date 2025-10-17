@@ -25,20 +25,16 @@ export type FullI18nKey = {
 
 i18n
   .use(Backend)
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     supportedLngs: ['en', 'de', 'es', 'fr', 'pt', 'ja', 'hi', 'nl', 'ru', 'zh'],
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     },
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json'
-    },
-    detection: {
-      lookupLocalStorage: 'lang',
-      caches: ['localStorage'] // cache the detected lang back to localStorage
     }
   });
 
